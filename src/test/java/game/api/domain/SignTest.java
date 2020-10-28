@@ -1,4 +1,4 @@
-package game.api.sign;
+package game.api.domain;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -40,16 +40,16 @@ public class SignTest {
 
     @Test
     public void checkRockDrawsRock() {
-        Assert.assertEquals(Result.DRAWS, Sign.ROCK.against(Sign.ROCK));
+        Assert.assertEquals(Result.DRAW, Sign.ROCK.against(Sign.ROCK));
     }
 
     @Test
     public void checkPaperDrawsPaper() {
-        Assert.assertEquals(Result.DRAWS, Sign.PAPER.against(Sign.PAPER));
+        Assert.assertEquals(Result.DRAW, Sign.PAPER.against(Sign.PAPER));
     }
 
     @Test
     public void checkScissorDrawsScissor() {
-        Assert.assertEquals(Result.DRAWS, Sign.SCISSORS.against(Sign.SCISSORS));
+        Assert.assertEquals(Result.DRAW, Sign.SCISSORS.against(Sign.SCISSORS));
     }
 }

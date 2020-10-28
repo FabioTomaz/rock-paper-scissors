@@ -5,7 +5,7 @@ import game.api.player.Player;
 import game.api.player.strategy.ConstantStrategy;
 import game.api.player.strategy.GameStrategy;
 import game.api.player.strategy.RandomStrategy;
-import game.api.sign.Sign;
+import game.api.domain.Sign;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -41,13 +41,13 @@ public class CommandLineDataGetter implements GameDataGetter {
         List<Player> players = new ArrayList<>(2);
 
         LOGGER.info("---- Available Strategies ----");
-        for(int i=0; i<=AVAILABLE_STRATEGIES.length; i++) {
+        for(int i=0; i<AVAILABLE_STRATEGIES.length; i++) {
             LOGGER.info(String.format("%d) %s -> %s", i, AVAILABLE_STRATEGIES[i].getName(), AVAILABLE_STRATEGIES[i].getDescription()));
         }
         LOGGER.info("------------------------------");
 
         for(int i=0; i<=AVAILABLE_STRATEGIES.length; i++) {
-            GameStrategy gameStrategy = this.askPlayerStrategy(i);
+            GameStrategy gameStrategy = this.askPlayerStrategy(i+1);
             players.add(new ComputerPlayer(gameStrategy));
         }
         return players;

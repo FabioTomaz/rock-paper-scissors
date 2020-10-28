@@ -1,18 +1,19 @@
 package game.api.player;
 
-import game.api.sign.Sign;
+import game.api.domain.Sign;
 
+import java.util.Objects;
 import java.util.Observable;
 
 public abstract class Player extends Observable {
-    private static int currentId = 1;
+    private static int currentId = 0;
 
     private final int playerId;
 
     private int score;
 
     Player() {
-        this.playerId = Player.currentId++;
+        this.playerId = ++Player.currentId;
         this.score = 0;
     }
 
@@ -30,4 +31,21 @@ public abstract class Player extends Observable {
 
     public abstract Sign getSign();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Player player = (Player) o;
+        return playerId == player.playerId &&
+                score == player.score;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(playerId, score);
+    }
 }

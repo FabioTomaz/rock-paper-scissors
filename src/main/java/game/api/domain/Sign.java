@@ -1,4 +1,4 @@
-package game.api.sign;
+package game.api.domain;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,7 +45,7 @@ public enum Sign {
         } else if (sign == beatenBy()) {
             return Result.LOSES;
         } else {
-            return Result.DRAWS;
+            return Result.DRAW;
         }
     }
 

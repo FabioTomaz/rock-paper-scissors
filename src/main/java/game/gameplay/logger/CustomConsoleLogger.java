@@ -5,26 +5,18 @@ import game.gameplay.lifecycle.Game;
 import game.gameplay.lifecycle.Round;
 import org.apache.log4j.Logger;
 
-import java.util.List;
-
 public class CustomConsoleLogger implements GameLogger {
 
     private static final Logger LOGGER = Logger.getLogger(CustomConsoleLogger.class);
 
-    private List<Player> players;
-
-    public CustomConsoleLogger(List<Player> players) {
-        this.players = players;
-    }
-
     @Override
     public void outputGameStart(Game game) {
-        LOGGER.info("Starting game..");
+        LOGGER.info(String.format("Starting game (%d rounds)...", game.getNRounds()));
     }
 
     @Override
     public void outputRoundStart(Round round) {
-        LOGGER.info("---- ROUND START ----");
+        LOGGER.info(String.format("---- ROUND %d START ----", round.getRoundNumber()));
     }
 
     @Override
@@ -34,10 +26,10 @@ public class CustomConsoleLogger implements GameLogger {
 
     @Override
     public void outputRoundSummary(Round round) {
-        for (int i = 0; i < players.size(); i++) {
+        for (int i = 0; i < round.getPlayers().size(); i++) {
             LOGGER.info(String.format(
                     "Player %d plays %s",
-                    players.get(i).getPlayerId(),
+                    round.getPlayers().get(i).getPlayerId(),
                     round.getPlayerSigns().get(i)
             ));
         }

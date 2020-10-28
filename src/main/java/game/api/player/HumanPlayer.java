@@ -1,6 +1,6 @@
 package game.api.player;
 
-import game.api.sign.Sign;
+import game.api.domain.Sign;
 
 public class HumanPlayer extends Player {
 

@@ -1,18 +1,19 @@
 package game.gameplay.lifecycle;
 
+import game.api.domain.Result;
+import game.api.domain.RoundResult;
+import game.api.domain.Sign;
 import game.api.player.Player;
-import game.api.result.DrawRoundResult;
-import game.api.result.PlayerRoundResult;
-import game.api.result.RoundResult;
-import game.api.result.WinRoundResult;
-import game.api.sign.Result;
-import game.api.sign.Sign;
 import game.gameplay.logger.GameLogger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Round {
+
+    private static int currentRound = 0;
+
+    private final int roundNumber;
 
     private final GameLogger logger;
 
@@ -22,6 +23,7 @@ public class Round {
     private RoundResult roundResult = null;
 
     Round(List<Player> players, GameLogger logger) {
+        this.roundNumber = ++Round.currentRound;
         this.players = players;
         this.logger = logger;
         this.playerSigns = new ArrayList<>(players.size());
@@ -44,15 +46,32 @@ public class Round {
         this.logger.outputRoundSummary(this);
     }
 
+    private RoundResult determineRoundResult() {
+        RoundResult result;
+        if (playerSigns.get(0).against(playerSigns.get(1)) == Result.WINS) {
+            result = new RoundResult(Result.WINS, players.get(0));
+        } else if (playerSigns.get(1).against(playerSigns.get(0)) == Result.WINS) {
+            result = new RoundResult(Result.WINS, players.get(1));
+        } else {
+            result = new RoundResult(Result.DRAW);
+        }
+        return result;
+    }
+
+
     private void updatePlayerScores() {
-        if (roundResult instanceof PlayerRoundResult) {
-            Player resultPlayer = ((PlayerRoundResult) roundResult).getPlayer();
+        if (roundResult.getPlayer() != null) {
+            Player resultPlayer = roundResult.getPlayer();
             resultPlayer.setScore(resultPlayer.getScore() + roundResult.getScore());
         } else {
             for (Player player : players) {
                 player.setScore(player.getScore() + roundResult.getScore());
             }
         }
+    }
+
+    public List<Player> getPlayers() {
+        return this.players;
     }
 
     public List<Sign> getPlayerSigns() {
@@ -63,16 +82,8 @@ public class Round {
         return this.roundResult;
     }
 
-    private RoundResult determineRoundResult() {
-        RoundResult result;
-        if (playerSigns.get(0).against(playerSigns.get(1)) == Result.WINS) {
-            result = new WinRoundResult(players.get(0));
-        } else if (playerSigns.get(1).against(playerSigns.get(0)) == Result.WINS) {
-            result = new WinRoundResult(players.get(1));
-        } else {
-            result = new DrawRoundResult();
-        }
-        return result;
+    public int getRoundNumber() {
+        return this.roundNumber;
     }
 
 }

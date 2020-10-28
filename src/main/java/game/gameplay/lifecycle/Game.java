@@ -67,7 +67,7 @@ public class Game {
         }
     }
 
-    public int getnRounds() {
+    public int getNRounds() {
         return nRounds;
     }
 

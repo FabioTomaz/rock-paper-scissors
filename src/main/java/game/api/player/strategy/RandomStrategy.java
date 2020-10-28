@@ -1,6 +1,6 @@
 package game.api.player.strategy;
 
-import game.api.sign.Sign;
+import game.api.domain.Sign;
 
 import java.util.Random;
 

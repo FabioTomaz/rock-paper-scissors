@@ -4,7 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import game.api.player.strategy.RandomStrategy;
-import game.api.sign.Sign;
+import game.api.domain.Sign;
 import game.api.player.strategy.GameStrategy;
 import game.api.player.strategy.ConstantStrategy;
 import org.junit.Assert;
