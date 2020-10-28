@@ -23,10 +23,6 @@ j
 :src/main/java/game/gameplay/data/StaticGameDataGetter.java,2/1/2129ad20f94168aa92ff4da4d7f443dfdcd68e22
 ^
 .src/main/java/game/api/player/HumanPlayer.java,d/9/d9223b578821e260fa7705057a312ba230eabffe
-e
-5src/main/java/game/gameplay/logger/ConsoleLogger.java,c/8/c8916d18dce21efae37a2bc7015163395ad29f73
-b
-2src/main/java/game/gameplay/logger/FileLogger.java,5/7/5738dc53da0ee575477e9aeae79a827780849241
 j
 :src/main/java/game/api/player/strategy/RandomStrategy.java,9/1/91e7985b08920154a0a56831b9fcebdcdc2b211b
 l
@@ -47,8 +43,6 @@ d
 4src/main/java/game/gameplay/data/GameDataGetter.java,a/c/ac5af0a7b8a04f6d05753c292a20ec49747d52a5
 k
 ;src/main/java/game/gameplay/data/CommandLineDataGetter.java,e/9/e9554d239789cca0da04579ed41afdbb7a1d5c16
-d
-4src/main/java/game/gameplay/lifecycle/GameRound.java,d/1/d16f43e78836b5441fa1eeb05f209814929540aa
 _
 /src/main/java/game/gameplay/lifecycle/Game.java,8/a/8a7723ef3ced63d169d6ba9d97cb0225d08ad84b
 Y
@@ -57,5 +51,3 @@ Y
 -src/test/java/game/api/player/PlayerTest.java,b/c/bc32ba79426e002140f6e437c57cfdb66f1942d7
 Y
 )src/test/java/game/gameplay/GameTest.java,a/b/ab3052cc4a4379398ea73f2a5eb6ffd7e0c755d2
-^
-.src/test/java/game/gameplay/GameRoundTest.java,9/f/9fce9f4cde57d8e27f801b838ebc51c0ce14df00
