@@ -76,15 +76,16 @@ public class CommandLineDataGetter implements GameDataGetter {
                 number = Integer.parseInt(str);
                 if ((min == null || number >= min) && (max == null || number < max)) {
                     break;
+                } else {
+                    LOGGER.error(String.format(
+                            "Number range - Min: %d Max: %s",
+                            min != null ? min : 0,
+                            max != null ? max-1 : ""
+                    ));
                 }
             } catch (Exception e) {
                 LOGGER.error("Not a valid number!");
             }
-            LOGGER.error(String.format(
-                    "Number range - Min: %d Max: %s",
-                    min != null ? min : 0,
-                    max != null ? max-1 : ""
-            ));
         }
         return number;
     }
