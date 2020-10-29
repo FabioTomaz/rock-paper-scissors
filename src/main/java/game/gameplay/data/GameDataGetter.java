@@ -7,5 +7,5 @@ import java.util.List;
 public interface GameDataGetter {
     int getRounds();
 
-    List<Player> getPlayers();
+    List<Player> getPlayers(int nPlayers);
 }

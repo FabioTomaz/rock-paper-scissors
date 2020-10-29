@@ -21,7 +21,7 @@ public class StaticGameDataGetter implements GameDataGetter {
     }
 
     @Override
-    public List<Player> getPlayers() {
+    public List<Player> getPlayers(int nPlayers) {
         return this.players;
     }
 }

@@ -9,6 +9,8 @@ import java.util.List;
 
 public class Game {
 
+    private static final int PLAYERS_NUMBER = 2;
+
     // Developer Game customization
     private GameDataGetter gameDataGetter;
     private GameLogger logger;
@@ -37,7 +39,7 @@ public class Game {
 
     private void startGame() {
         this.logger.outputGameStart(this);
-        this.players = this.gameDataGetter.getPlayers();
+        this.players = this.gameDataGetter.getPlayers(PLAYERS_NUMBER);
         this.nRounds = this.gameDataGetter.getRounds();
     }
 

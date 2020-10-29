@@ -25,46 +25,64 @@ public class CommandLineDataGetter implements GameDataGetter {
 
     @Override
     public int getRounds() {
-        int nRounds;
-        do {
-            Scanner scanner = new Scanner(System.in);
-
-            LOGGER.info("Enter number of rounds: ");
-            nRounds = scanner.nextInt();
-        } while (nRounds <= 0);
-
-        return nRounds;
+        return this.readNumber("Enter number of rounds: ", 1, null);
     }
 
     @Override
-    public List<Player> getPlayers() {
-        List<Player> players = new ArrayList<>(2);
+    public List<Player> getPlayers(int nPlayers) {
+        List<Player> players = new ArrayList<>(nPlayers);
 
         LOGGER.info("---- Available Strategies ----");
-        for(int i=0; i<AVAILABLE_STRATEGIES.length; i++) {
-            LOGGER.info(String.format("%d) %s -> %s", i, AVAILABLE_STRATEGIES[i].getName(), AVAILABLE_STRATEGIES[i].getDescription()));
+        for (int i = 0; i < AVAILABLE_STRATEGIES.length; i++) {
+            LOGGER.info(String.format(
+                    "%d) %s -> %s",
+                    i,
+                    AVAILABLE_STRATEGIES[i].getName(),
+                    AVAILABLE_STRATEGIES[i].getDescription()
+            ));
         }
         LOGGER.info("------------------------------");
 
-        for(int i=0; i<=AVAILABLE_STRATEGIES.length; i++) {
-            GameStrategy gameStrategy = this.askPlayerStrategy(i+1);
+        for (int i = 0; i < nPlayers; i++) {
+            GameStrategy gameStrategy = this.askPlayerStrategy(i + 1);
             players.add(new ComputerPlayer(gameStrategy));
         }
         return players;
     }
 
     private GameStrategy askPlayerStrategy(int playerNumber) {
-        int strategyIndex;
-        do {
-            Scanner scanner = new Scanner(System.in);
-            LOGGER.info(String.format(
-                    "Enter strategy for player %d (0-%d): ",
-                    playerNumber,
-                    AVAILABLE_STRATEGIES.length-1
-            ));
-            strategyIndex = scanner.nextInt();
-        } while (strategyIndex <= AVAILABLE_STRATEGIES.length);
+        String message = String.format(
+                "Enter strategy for player %d (0-%d): ",
+                playerNumber,
+                AVAILABLE_STRATEGIES.length - 1
+        );
+
+        int strategyIndex = this.readNumber(message, 0, AVAILABLE_STRATEGIES.length);
 
         return AVAILABLE_STRATEGIES[strategyIndex];
+    }
+
+    private int readNumber(String msg, Integer min, Integer max) {
+        Scanner scanner = new Scanner(System.in);
+        String str;
+        int number;
+        while (true) {
+            try {
+                LOGGER.info(msg);
+                str = scanner.nextLine();
+                number = Integer.parseInt(str);
+                if ((min == null || number >= min) && (max == null || number < max)) {
+                    break;
+                }
+            } catch (Exception e) {
+                LOGGER.error("Not a valid number!");
+            }
+            LOGGER.error(String.format(
+                    "Number range - Min: %d Max: %s",
+                    min != null ? min : 0,
+                    max != null ? max-1 : ""
+            ));
+        }
+        return number;
     }
 }
