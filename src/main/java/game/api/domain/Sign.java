@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Enum representing the all the possible game signs
+ */
 public enum Sign {
     PAPER {
         @Override

@@ -4,6 +4,9 @@ import game.api.player.Player;
 import game.gameplay.lifecycle.Game;
 import game.gameplay.lifecycle.Round;
 
+/**
+ * Contract for logging game information to the user interface
+ */
 public interface GameLogger {
     void outputGameStart(Game game);
 

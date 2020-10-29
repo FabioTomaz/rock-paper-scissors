@@ -5,6 +5,9 @@ import game.api.domain.Sign;
 import java.util.Objects;
 import java.util.Observable;
 
+/**
+ * Simple class representing a player
+ */
 public abstract class Player extends Observable {
     private static int currentId = 0;
 

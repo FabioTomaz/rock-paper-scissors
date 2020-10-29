@@ -4,6 +4,9 @@ import game.api.domain.Sign;
 
 import java.util.Random;
 
+/**
+ * Strategy that randomly chooses the sign to play
+ */
 public class RandomStrategy implements GameStrategy {
 
     private static final String NAME = "Random Strategy";

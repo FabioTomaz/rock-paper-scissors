@@ -4,6 +4,9 @@ import game.api.player.Player;
 
 import java.util.List;
 
+/**
+ * Static data getter for pre-configured games
+ */
 public class StaticGameDataGetter implements GameDataGetter {
 
     private int rounds;

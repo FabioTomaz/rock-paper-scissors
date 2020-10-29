@@ -5,6 +5,9 @@ import game.api.player.strategy.GameStrategy;
 
 import java.util.Objects;
 
+/**
+ * Simple computer player with game strategy
+ */
 public class ComputerPlayer extends Player {
 
     private GameStrategy gameStrategy;

@@ -9,6 +9,9 @@ import game.gameplay.logger.GameLogger;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the lifecycle of a rock, paper and scissors round
+ */
 public class Round {
 
     private static int currentRound = 0;

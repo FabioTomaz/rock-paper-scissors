@@ -12,6 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Command line based data getter for games with console interaction
+ */
 public class CommandLineDataGetter implements GameDataGetter {
 
     private static final Logger LOGGER = Logger.getLogger(CommandLineDataGetter.class);

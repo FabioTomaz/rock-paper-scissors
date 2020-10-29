@@ -2,6 +2,9 @@ package game.api.player;
 
 import game.api.domain.Sign;
 
+/**
+ * Simple command line based human player
+ */
 public class HumanPlayer extends Player {
 
     @Override

@@ -5,6 +5,9 @@ import game.gameplay.lifecycle.Game;
 import game.gameplay.lifecycle.Round;
 import org.apache.log4j.Logger;
 
+/**
+ * Custom console based logger
+ */
 public class CustomConsoleLogger implements GameLogger {
 
     private static final Logger LOGGER = Logger.getLogger(CustomConsoleLogger.class);

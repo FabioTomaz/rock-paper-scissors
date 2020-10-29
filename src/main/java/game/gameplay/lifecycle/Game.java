@@ -7,6 +7,9 @@ import game.gameplay.logger.GameLogger;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents the lifecycle of a rock, paper and scissors game
+ */
 public class Game {
 
     private static final int PLAYERS_NUMBER = 2;

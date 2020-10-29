@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Enum representing the round result
+ */
 public class RoundResult {
 
     private static final Map<Result, Integer> RESULT_SCORES = new HashMap<>();
