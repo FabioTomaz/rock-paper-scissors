@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Unit test for simple App.
+ *  Unit tests for round lifecycle related logic.
  */
 public class RoundTest {
 

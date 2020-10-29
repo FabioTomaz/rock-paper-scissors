@@ -34,18 +34,27 @@ public class Game {
         this.rounds = new ArrayList<>();
     }
 
+    /**
+     * Starts the game lifecycle
+     */
     public void playGame() {
         this.startGame();
         this.playRounds();
         this.finishGame();
     }
 
+    /**
+     * Asks for game configuration
+     */
     private void startGame() {
-        this.logger.outputGameStart(this);
+        this.logger.gameStart(this);
         this.players = this.gameDataGetter.getPlayers(PLAYERS_NUMBER);
         this.nRounds = this.gameDataGetter.getRounds();
     }
 
+    /**
+     * Plays all the rounds
+     */
     private void playRounds() {
         for (int i = 0; i < this.nRounds; i++) {
             Round round = new Round(this.players, this.logger);
@@ -54,11 +63,18 @@ public class Game {
         }
     }
 
+    /**
+     * Summarizes the round results
+     */
     private void finishGame() {
         this.winner = this.determineWinner();
-        this.logger.outputGameSummary(this);
+        this.logger.gameSummary(this);
     }
 
+    /**
+     * Determines winner based on player scores
+     * @return winner Player
+     */
     private Player determineWinner() {
         Player firstPlayer = players.get(0);
         Player secondPlayer = players.get(1);

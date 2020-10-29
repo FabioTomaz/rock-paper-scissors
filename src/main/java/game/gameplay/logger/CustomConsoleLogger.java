@@ -13,22 +13,22 @@ public class CustomConsoleLogger implements GameLogger {
     private static final Logger LOGGER = Logger.getLogger(CustomConsoleLogger.class);
 
     @Override
-    public void outputGameStart(Game game) {
+    public void gameStart(Game game) {
         LOGGER.info(String.format("Starting game (%d rounds)...", game.getNRounds()));
     }
 
     @Override
-    public void outputRoundStart(Round round) {
+    public void roundStart(Round round) {
         LOGGER.info(String.format("---- ROUND %d START ----", round.getRoundNumber()));
     }
 
     @Override
-    public void outputPlayerWait(Player player) {
+    public void playerWait(Player player) {
         LOGGER.info(String.format("Waiting for player %d...", player.getPlayerId()));
     }
 
     @Override
-    public void outputRoundSummary(Round round) {
+    public void roundSummary(Round round) {
         for (int i = 0; i < round.getPlayers().size(); i++) {
             LOGGER.info(String.format(
                     "Player %d plays %s",
@@ -41,7 +41,7 @@ public class CustomConsoleLogger implements GameLogger {
     }
 
     @Override
-    public void outputGameSummary(Game game) {
+    public void gameSummary(Game game) {
         LOGGER.info("---- GAME END ----");
         LOGGER.info("---- SCORES ----");
 

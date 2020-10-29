@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Unit test for simple App.
+ * Unit tests for different types of players
  */
 public class PlayerTest {
 

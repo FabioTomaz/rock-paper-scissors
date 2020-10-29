@@ -32,6 +32,10 @@ public abstract class Player extends Observable {
         this.score = score;
     }
 
+    /**
+     * Determines the sign that the player will play
+     * @return Sign played
+     */
     public abstract Sign getSign();
 
     @Override

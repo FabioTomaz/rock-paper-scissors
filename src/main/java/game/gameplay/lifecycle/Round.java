@@ -32,23 +32,31 @@ public class Round {
         this.playerSigns = new ArrayList<>(players.size());
     }
 
+    /**
+     * Starts round lifecycle
+     */
     void playRound() {
-        this.logger.outputRoundStart(this);
+        this.logger.roundStart(this);
         for (Player player : this.players) {
-            this.logger.outputPlayerWait(player);
-            Sign sign = player.getSign();
-            int playerIndex = this.players.indexOf(player);
-            this.playerSigns.add(playerIndex, sign);
+            this.logger.playerWait(player);
+            this.playerSigns.add(player.getSign());
         }
         this.finishRound();
     }
 
+    /**
+     * Updates player scores and summarizes round results
+     */
     private void finishRound() {
         this.roundResult = this.determineRoundResult();
         this.updatePlayerScores();
-        this.logger.outputRoundSummary(this);
+        this.logger.roundSummary(this);
     }
 
+    /**
+     * Determines the round result based on the played signs
+     * @return RoundResult of the sign confrontation
+     */
     private RoundResult determineRoundResult() {
         RoundResult result;
         if (playerSigns.get(0).against(playerSigns.get(1)) == Result.WINS) {
@@ -61,7 +69,9 @@ public class Round {
         return result;
     }
 
-
+    /**
+     * Updates the player scores based on the round result
+     */
     private void updatePlayerScores() {
         if (roundResult.getPlayer() != null) {
             Player resultPlayer = roundResult.getPlayer();

@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Unit test for simple App.
+ * Unit tests for computer player strategies
  */
 public class StrategiesTest {
 

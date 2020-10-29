@@ -42,6 +42,11 @@ public enum Sign {
         }
     };
 
+    /**
+     * Determines the result of confrontation between this sign and other sign
+     * @param sign the opposite sign
+     * @return Result of sign confrontation
+     */
     public Result against(Sign sign) {
         if (sign == beats()) {
             return Result.WINS;
@@ -52,8 +57,14 @@ public enum Sign {
         }
     }
 
+    /**
+     * @return the Sign that this sign beats
+     */
     public abstract Sign beats();
 
+    /**
+     * @return the Sign that this sign is beaten by
+     */
     public abstract Sign beatenBy();
 
     public static final List<Sign> SIGNS = Collections.unmodifiableList(Arrays.asList(values()));
