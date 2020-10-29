@@ -78,9 +78,9 @@ public class CommandLineDataGetter implements GameDataGetter {
                     break;
                 } else {
                     LOGGER.error(String.format(
-                            "Number range - Min: %d Max: %s",
+                            "Number range - Min: %d %s",
                             min != null ? min : 0,
-                            max != null ? max-1 : ""
+                            max != null ? String.format("Max: %d" , max-1) : ""
                     ));
                 }
             } catch (Exception e) {

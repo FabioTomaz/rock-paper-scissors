@@ -48,8 +48,12 @@ public class Game {
      */
     private void startGame() {
         this.logger.gameStart(this);
-        this.players = this.gameDataGetter.getPlayers(PLAYERS_NUMBER);
-        this.nRounds = this.gameDataGetter.getRounds();
+        while(this.players == null || this.players.size() != 2) {
+            this.players = this.gameDataGetter.getPlayers(PLAYERS_NUMBER);
+        }
+        while(this.nRounds <= 0) {
+            this.nRounds = this.gameDataGetter.getRounds();
+        }
     }
 
     /**
