@@ -13,9 +13,9 @@ public class RoundResult {
 
     private static final Map<Result, Integer> RESULT_SCORES = new HashMap<>();
     static {
-        RESULT_SCORES.put(Result.DRAW, 1);
+        RESULT_SCORES.put(Result.DRAW, 0);
         RESULT_SCORES.put(Result.LOSES, 0);
-        RESULT_SCORES.put(Result.WINS, 2);
+        RESULT_SCORES.put(Result.WINS, 1);
     }
 
     private Result result;

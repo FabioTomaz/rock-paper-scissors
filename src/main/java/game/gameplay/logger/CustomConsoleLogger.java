@@ -12,6 +12,8 @@ public class CustomConsoleLogger implements GameLogger {
 
     private static final Logger LOGGER = Logger.getLogger(CustomConsoleLogger.class);
 
+    private static final String TABLE_SEPARATOR = "+-----------------------------------+";
+
     @Override
     public void gameStart(Game game) {
         LOGGER.info(String.format("Starting game (%d rounds)...", game.getNRounds()));
@@ -45,7 +47,7 @@ public class CustomConsoleLogger implements GameLogger {
         LOGGER.info("---- GAME END ----");
         LOGGER.info("---- SUMMARY ----");
 
-        LOGGER.info("+-----------------------------------+");
+        LOGGER.info(TABLE_SEPARATOR);
         LOGGER.info(String.format(
                 "| %-7S | %-10s | %-10s |",
                 "ROUND",
@@ -53,7 +55,7 @@ public class CustomConsoleLogger implements GameLogger {
                 "PLAYER 2"
         ));
 
-        LOGGER.info("+-----------------------------------+");
+        LOGGER.info(TABLE_SEPARATOR);
         for (int i=0; i< game.getRounds().size(); i++) {
             Round round = game.getRounds().get(i);
             LOGGER.info(String.format(
@@ -64,14 +66,14 @@ public class CustomConsoleLogger implements GameLogger {
             ));
         }
 
-        LOGGER.info("+-----------------------------------+");
+        LOGGER.info(TABLE_SEPARATOR);
         LOGGER.info(String.format(
                 "| %-7s | %-10d | %-10d |",
                 "SCORES",
                 game.getPlayers().get(0).getScore(),
                 game.getPlayers().get(1).getScore()
         ));
-        LOGGER.info("+-----------------------------------+");
+        LOGGER.info(TABLE_SEPARATOR);
 
         if (game.getWinner() != null) {
             LOGGER.info(String.format("PLAYER %d WINS!", game.getWinner().getPlayerId()));
