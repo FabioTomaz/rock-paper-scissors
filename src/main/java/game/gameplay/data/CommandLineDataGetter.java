@@ -4,7 +4,7 @@ import game.api.player.ComputerPlayer;
 import game.api.player.HumanPlayer;
 import game.api.player.Player;
 import game.api.player.strategy.ConstantStrategy;
-import game.api.player.strategy.GameStrategy;
+import game.api.player.strategy.Strategy;
 import game.api.player.strategy.RandomStrategy;
 import game.api.domain.Sign;
 import org.apache.log4j.Logger;
@@ -20,7 +20,7 @@ public class CommandLineDataGetter implements GameDataGetter {
 
     private static final Logger LOGGER = Logger.getLogger(CommandLineDataGetter.class);
 
-    private static final GameStrategy[] AVAILABLE_STRATEGIES = {
+    private static final Strategy[] AVAILABLE_STRATEGIES = {
             new RandomStrategy(),
             new ConstantStrategy(Sign.ROCK),
             new ConstantStrategy(Sign.PAPER),
@@ -35,11 +35,11 @@ public class CommandLineDataGetter implements GameDataGetter {
     @Override
     public List<Player> getPlayers(int nPlayers) {
         List<Player> players = new ArrayList<>(nPlayers);
-        LOGGER.info("---- Available Players ----");
+        LOGGER.info("---- Available Player Types ----");
         LOGGER.info("0) Computer");
         LOGGER.info("1) Human");
         for (int i = 0; i < nPlayers; i++) {
-            int playerType = this.readNumber(String.format("Choose type of player %d", i), 0, 2);
+            int playerType = this.readNumber(String.format("Choose type of player %d", i+1), 0, 2);
             if(playerType == 0) {
                 players.add(this.getComputerPlayer(i+1));
             } else {
@@ -60,11 +60,11 @@ public class CommandLineDataGetter implements GameDataGetter {
             ));
         }
         LOGGER.info("------------------------------");
-        GameStrategy gameStrategy = this.getPlayerStrategy(playerNumber);
-        return new ComputerPlayer(gameStrategy);
+        Strategy strategy = this.getPlayerStrategy(playerNumber);
+        return new ComputerPlayer(strategy);
     }
 
-    private GameStrategy getPlayerStrategy(int playerNumber) {
+    private Strategy getPlayerStrategy(int playerNumber) {
         String message = String.format(
                 "Enter strategy for player %d (0-%d): ",
                 playerNumber,

@@ -5,7 +5,7 @@ import game.api.player.Player;
 import game.api.player.strategy.ConstantStrategy;
 import game.api.domain.Sign;
 import game.gameplay.data.GameDataGetter;
-import game.gameplay.data.StaticGameDataGetter;
+import game.gameplay.data.StaticDataGetter;
 import game.gameplay.lifecycle.Game;
 import game.gameplay.logger.CustomConsoleLogger;
 import game.gameplay.logger.GameLogger;
@@ -34,7 +34,7 @@ public class GameTest {
         players.add(new ComputerPlayer(new ConstantStrategy(Sign.PAPER)));
         this.players = players;
 
-        this.gameDataGetter = new StaticGameDataGetter(3, players);
+        this.gameDataGetter = new StaticDataGetter(3, players);
         GameLogger consoleLogger = new CustomConsoleLogger();
         this.game = new Game( this.gameDataGetter, consoleLogger);
         this.game.playGame();

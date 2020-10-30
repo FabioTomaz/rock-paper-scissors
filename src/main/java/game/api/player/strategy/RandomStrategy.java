@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Strategy that randomly chooses the sign to play
  */
-public class RandomStrategy implements GameStrategy {
+public class RandomStrategy implements Strategy {
 
     private static final String NAME = "Random Strategy";
     private static final String DESCRIPTION = "Randomly chooses between rock paper and scissors";

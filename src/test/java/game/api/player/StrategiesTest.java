@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import game.api.player.strategy.RandomStrategy;
 import game.api.domain.Sign;
-import game.api.player.strategy.GameStrategy;
+import game.api.player.strategy.Strategy;
 import game.api.player.strategy.ConstantStrategy;
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class StrategiesTest {
     }
 
     private void checkConstantStrategy(Sign sign) {
-        GameStrategy strategy = new ConstantStrategy(sign);
+        Strategy strategy = new ConstantStrategy(sign);
         for (int i=0; i<100; i++) {
             Assert.assertEquals(sign, strategy.getSign());
         }
@@ -42,7 +42,7 @@ public class StrategiesTest {
 
     @Test
     public void checkRandomStrategyPlaysSign() {
-        GameStrategy strategy = new RandomStrategy();
+        Strategy strategy = new RandomStrategy();
         int N = 1000;
         for(int i = 0; i < N; i++) {
             Sign sign = strategy.getSign();
@@ -53,7 +53,7 @@ public class StrategiesTest {
 
     @Test
     public void checkRandomStrategyPlaysRandomSigns() {
-        GameStrategy strategy = new RandomStrategy();
+        Strategy strategy = new RandomStrategy();
         Map<Sign, Integer> map = new HashMap<>();
         map.put(Sign.ROCK, 0);
         map.put(Sign.PAPER, 0);

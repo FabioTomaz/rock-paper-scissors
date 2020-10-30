@@ -5,7 +5,7 @@ import game.api.domain.Sign;
 /**
  * Strategy that always chooses the same sign to play
  */
-public class ConstantStrategy implements GameStrategy {
+public class ConstantStrategy implements Strategy {
 
     private static final String NAME = "%s Strategy";
     private static final String DESCRIPTION = "Always plays %s";

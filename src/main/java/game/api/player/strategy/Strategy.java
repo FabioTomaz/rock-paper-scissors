@@ -5,7 +5,7 @@ import game.api.domain.Sign;
 /**
  * Contract for a computer player strategy
  */
-public interface GameStrategy {
+public interface Strategy {
     String getName();
 
     String getDescription();

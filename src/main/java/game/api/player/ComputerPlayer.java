@@ -1,7 +1,7 @@
 package game.api.player;
 
 import game.api.domain.Sign;
-import game.api.player.strategy.GameStrategy;
+import game.api.player.strategy.Strategy;
 
 import java.util.Objects;
 
@@ -10,24 +10,24 @@ import java.util.Objects;
  */
 public class ComputerPlayer extends Player {
 
-    private GameStrategy gameStrategy;
+    private Strategy strategy;
 
-    public ComputerPlayer(GameStrategy gameStrategy) {
+    public ComputerPlayer(Strategy strategy) {
         super();
-        this.gameStrategy = gameStrategy;
+        this.strategy = strategy;
     }
 
-    public void setGameStrategy(GameStrategy gameStrategy) {
-        this.gameStrategy = gameStrategy;
+    public void setStrategy(Strategy strategy) {
+        this.strategy = strategy;
     }
 
-    public GameStrategy getGameStrategy() {
-        return gameStrategy;
+    public Strategy getStrategy() {
+        return strategy;
     }
 
     @Override
     public Sign getSign() {
-        return this.gameStrategy.getSign();
+        return this.strategy.getSign();
     }
 
     @Override
@@ -42,11 +42,11 @@ public class ComputerPlayer extends Player {
             return false;
         }
         ComputerPlayer that = (ComputerPlayer) o;
-        return Objects.equals(gameStrategy, that.gameStrategy);
+        return Objects.equals(strategy, that.strategy);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), gameStrategy);
+        return Objects.hash(super.hashCode(), strategy);
     }
 }

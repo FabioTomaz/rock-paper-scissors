@@ -2,7 +2,7 @@ package game.api.player;
 
 import game.api.domain.Sign;
 import game.api.player.strategy.ConstantStrategy;
-import game.api.player.strategy.GameStrategy;
+import game.api.player.strategy.Strategy;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,19 +13,19 @@ public class PlayerTest {
 
     @Test
     public void checkComputerPlayerStrategy() {
-        GameStrategy gameStrategy = new ConstantStrategy(Sign.ROCK);
-        ComputerPlayer player = new ComputerPlayer(gameStrategy);
-        Assert.assertEquals(gameStrategy, player.getGameStrategy());
+        Strategy strategy = new ConstantStrategy(Sign.ROCK);
+        ComputerPlayer player = new ComputerPlayer(strategy);
+        Assert.assertEquals(strategy, player.getStrategy());
     }
 
     @Test
     public void checkComputerPlayerSign() {
-        GameStrategy gameStrategy = new ConstantStrategy(Sign.ROCK);
-        ComputerPlayer player = new ComputerPlayer(gameStrategy);
+        Strategy strategy = new ConstantStrategy(Sign.ROCK);
+        ComputerPlayer player = new ComputerPlayer(strategy);
         Assert.assertEquals(Sign.ROCK, player.getSign());
-        player.setGameStrategy(new ConstantStrategy(Sign.PAPER));
+        player.setStrategy(new ConstantStrategy(Sign.PAPER));
         Assert.assertEquals(Sign.PAPER, player.getSign());
-        player.setGameStrategy(new ConstantStrategy(Sign.SCISSORS));
+        player.setStrategy(new ConstantStrategy(Sign.SCISSORS));
         Assert.assertEquals(Sign.SCISSORS, player.getSign());
     }
 }
