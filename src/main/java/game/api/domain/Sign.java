@@ -2,7 +2,9 @@ package game.api.domain;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Enum representing the all the possible game signs
@@ -10,47 +12,48 @@ import java.util.List;
 public enum Sign {
     PAPER {
         @Override
-        public Sign beats() {
-            return Sign.ROCK;
+        public Set<Sign> beats() {
+            return Sign.signSet(Sign.ROCK);
         }
 
         @Override
-        public Sign beatenBy() {
-            return Sign.SCISSORS;
+        public Set<Sign> beatenBy() {
+            return Sign.signSet(Sign.SCISSORS);
         }
     },
     ROCK {
         @Override
-        public Sign beats() {
-            return Sign.SCISSORS;
+        public Set<Sign> beats() {
+            return Sign.signSet(Sign.SCISSORS);
         }
 
         @Override
-        public Sign beatenBy() {
-            return Sign.PAPER;
+        public Set<Sign> beatenBy() {
+            return Sign.signSet(Sign.PAPER);
         }
     },
     SCISSORS {
         @Override
-        public Sign beats() {
-            return Sign.PAPER;
+        public Set<Sign> beats() {
+            return Sign.signSet(Sign.PAPER);
         }
 
         @Override
-        public Sign beatenBy() {
-            return Sign.ROCK;
+        public Set<Sign> beatenBy() {
+            return Sign.signSet(Sign.ROCK);
         }
     };
 
     /**
      * Determines the result of confrontation between this sign and other sign
+     *
      * @param sign the opposite sign
      * @return Result of sign confrontation
      */
     public Result against(Sign sign) {
-        if (sign == beats()) {
+        if (this.beats().contains(sign)) {
             return Result.WINS;
-        } else if (sign == beatenBy()) {
+        } else if (this.beatenBy().contains(sign)) {
             return Result.LOSES;
         } else {
             return Result.DRAW;
@@ -58,14 +61,18 @@ public enum Sign {
     }
 
     /**
-     * @return the Sign that this sign beats
+     * @return the Set of signs that this sign can beat
      */
-    public abstract Sign beats();
+    public abstract Set<Sign> beats();
 
     /**
-     * @return the Sign that this sign is beaten by
+     * @return the Set of signs that this sign is beaten by
      */
-    public abstract Sign beatenBy();
+    public abstract Set<Sign> beatenBy();
+
+    private static Set<Sign> signSet(Sign... signs) {
+        return new HashSet<>(Arrays.asList(signs));
+    }
 
     public static final List<Sign> SIGNS = Collections.unmodifiableList(Arrays.asList(values()));
     public static final int SIZE = SIGNS.size();
