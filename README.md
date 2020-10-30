@@ -3,7 +3,6 @@
 ## Building
 
 #### Requirements
-
 - JDK 1.8
 - Maven 3.6.0 or later
  
@@ -13,6 +12,13 @@ mvn clean install
 ```
 
 ## Running
+#### Requirements
+- JRE 1.8
+
+To run:
 ```
-java  -cp /home/fabio/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar:target/rock-paper-scissors-1.0-SNAPSHOT.jar game.App
+java -jar target/rock-paper-scissors-1.0-SNAPSHOT.jar
 ```
+
+## Disclaimer
+- The human player only works while running the jar in a normal terminal (not through a IDE console terminal) because System.console().readPassword has that limitation.

@@ -1,6 +1,7 @@
 package game.gameplay.data;
 
 import game.api.player.ComputerPlayer;
+import game.api.player.HumanPlayer;
 import game.api.player.Player;
 import game.api.player.strategy.ConstantStrategy;
 import game.api.player.strategy.GameStrategy;
@@ -34,7 +35,21 @@ public class CommandLineDataGetter implements GameDataGetter {
     @Override
     public List<Player> getPlayers(int nPlayers) {
         List<Player> players = new ArrayList<>(nPlayers);
+        LOGGER.info("---- Available Players ----");
+        LOGGER.info("0) Computer");
+        LOGGER.info("1) Human");
+        for (int i = 0; i < nPlayers; i++) {
+            int playerType = this.readNumber(String.format("Choose type of player %d", i), 0, 2);
+            if(playerType == 0) {
+                players.add(this.getComputerPlayer(i+1));
+            } else {
+                players.add(new HumanPlayer());
+            }
+        }
+        return players;
+    }
 
+    private ComputerPlayer getComputerPlayer(int playerNumber) {
         LOGGER.info("---- Available Strategies ----");
         for (int i = 0; i < AVAILABLE_STRATEGIES.length; i++) {
             LOGGER.info(String.format(
@@ -45,15 +60,11 @@ public class CommandLineDataGetter implements GameDataGetter {
             ));
         }
         LOGGER.info("------------------------------");
-
-        for (int i = 0; i < nPlayers; i++) {
-            GameStrategy gameStrategy = this.askPlayerStrategy(i + 1);
-            players.add(new ComputerPlayer(gameStrategy));
-        }
-        return players;
+        GameStrategy gameStrategy = this.getPlayerStrategy(playerNumber);
+        return new ComputerPlayer(gameStrategy);
     }
 
-    private GameStrategy askPlayerStrategy(int playerNumber) {
+    private GameStrategy getPlayerStrategy(int playerNumber) {
         String message = String.format(
                 "Enter strategy for player %d (0-%d): ",
                 playerNumber,

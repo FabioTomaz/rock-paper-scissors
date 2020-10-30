@@ -48,7 +48,7 @@ public class Game {
      */
     private void startGame() {
         this.logger.gameStart(this);
-        while(this.players == null || this.players.size() != 2) {
+        while(this.players == null || this.players.size() != PLAYERS_NUMBER) {
             this.players = this.gameDataGetter.getPlayers(PLAYERS_NUMBER);
         }
         while(this.nRounds <= 0) {
