@@ -48,7 +48,7 @@ public class GameTest {
     @Test
     public void checkPlayerScores() {
         Assert.assertEquals(0, this.game.getPlayers().get(0).getScore());
-        Assert.assertEquals(6, this.game.getPlayers().get(1).getScore());
+        Assert.assertEquals(3, this.game.getPlayers().get(1).getScore());
     }
 
     @Test
